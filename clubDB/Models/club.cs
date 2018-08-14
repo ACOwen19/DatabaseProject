@@ -38,6 +38,7 @@ namespace clubDB.Models
 
         public string Stadium { get; set; }
 
+        
         public Nullable<int> Capacity { get; set; }
 
         public string Map { get; set; }

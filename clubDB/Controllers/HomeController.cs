@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -125,7 +126,7 @@ namespace clubDB.Controllers
         }
 
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? Capacity)
         {
             if (id == null)
             {
@@ -137,6 +138,7 @@ namespace clubDB.Controllers
             {
                 return HttpNotFound();
             }
+          
 
             return View(club);
         }
