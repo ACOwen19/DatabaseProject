@@ -43,6 +43,20 @@ namespace clubDB.Controllers
             return View(clubs);
         }
 
+        public ActionResult _TableRow(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            club club = db.clubs.Find(id);
+            if (club == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(club);
+        }
+
         public ActionResult Create()
         {
             return View();
@@ -73,7 +87,7 @@ namespace clubDB.Controllers
             return View(club);
         }
 
-
+        
         public ActionResult Cheer(int id)
         {
             club clubCheer = db.clubs.Find(id);
@@ -84,7 +98,8 @@ namespace clubDB.Controllers
                 db.Entry(clubCheer).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return RedirectToAction("Index");
+            
+            return PartialView("_TableRow", clubCheer);
         }
 
         public ActionResult Edit(int? id)
@@ -126,7 +141,7 @@ namespace clubDB.Controllers
         }
 
 
-        public ActionResult Details(int? id, int? Capacity)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {

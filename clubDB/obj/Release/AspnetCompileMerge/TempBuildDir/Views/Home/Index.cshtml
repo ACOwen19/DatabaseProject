@@ -52,25 +52,9 @@
         </tr>
         @foreach (var item in Model)
             {
-            <tr>
-                <td class="centerContent">@Html.DisplayFor(m => item.Name)</td>
-                <td class="centerContent">@Html.DisplayFor(m => item.Established)</td>
-                <td class="centerContent">@Html.DisplayFor(m => item.Country)</td>
-                <td class="centerContent">@Html.DisplayFor(m => item.CurrentCoach)</td>
-                <td><img src="@Url.Content(item.Logo)" height="100" /> </td>
-                <td class="centerButtons">
-                    <button class="btn btn-outline-primary"> @Html.ActionLink("Cheer", "Cheer", new { id = item.id })</button>
-                     </td>
-                <td class="centerContent"> &#128483;@Html.DisplayFor(m => item.Cheer)</td>
-                <td class="centerButtons">
-                    <button class="btn btn-outline-primary"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button> |
 
-                    <button class="btn btn-outline-primary"> @Html.ActionLink("Details", "Details", new { id = item.id })</button> |
-
-                    <button class="btn btn-outline-primary"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
-                </td>
-
-            </tr>
+            @Html.Action("_TableRow", new { id = item.id })
+         
         }
 
     </table>
